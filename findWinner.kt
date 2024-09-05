@@ -1,17 +1,14 @@
-fun calculateWinner(): UUID {
-        val listSize = (10..100).random()
-        val list = mutableListOf<UUID>()
+    fun calculateWinner(sender: UUID, receiver: UUID): UUID {
+        val baseSize = (10..100).random() * 2
 
-        repeat(listSize / 2) {
+        val list = mutableListOf<UUID>()
+        
+        repeat(baseSize / 2) {
             list.add(sender)
             list.add(receiver)
         }
-
-        if (listSize % 2 != 0) {
-            list.add(listOf(sender, receiver).random())
-        }
-
+        
         list.shuffle()
-
+        
         return list.random()
     }
